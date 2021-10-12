@@ -1,0 +1,13 @@
+body{ margin-left: 150px;
+    /* margin-right: 200px; */
+    margin-top: 200px;
+    background-color: aliceblue;
+   }
+   header{
+   background-color:lightblue;
+
+   }
+  footer{
+      text-align: right;
+      background-color: aliceblue;
+  }

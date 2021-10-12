@@ -1,0 +1,25 @@
+header {
+    border-bottom: 1px solid;
+    text-align: center;
+    font-weight: bold;
+    padding:10px;
+}
+.table{
+    width:100%;
+    border:1px solid;
+}
+
+.form{
+    border:1px solid;
+    margin:20px;
+    
+}
+
+.inside_form{
+    padding:10px;
+}
+
+th, td{
+    border:1px solid;
+    border-collapse:collapse;
+}
