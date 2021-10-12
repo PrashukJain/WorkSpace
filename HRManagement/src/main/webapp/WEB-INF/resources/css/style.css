@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+    form{
+        margin-top: 150px;
+    }
+.reset-this {
+  all: inherit;
+  width:auto;
+}
+
+.redo-fieldset {
+  border: 1px solid black;
+  padding : 10px;
+} 
+.header{
+    border: none;
+    color:blue;
+    font-weight: bold;
+    font-size: large;
+}
+.footer{
+    margin: 15px;
+}
+.container{
+    margin-left: 130px;
+}
