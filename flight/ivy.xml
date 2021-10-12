@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="FlightSearchMaven" />
+    <dependencies>
+        <dependency org="com.opencsv" name="opencsv" rev="5.4">
+            <artifact name="opencsv" type="jar" />
+        </dependency>
+    </dependencies>
+</ivy-module>

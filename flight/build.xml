@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="FlighSearchAnt" default="main" basedir=".">
+    <description>
+        Create a Java Project (JAR) with Ant build script
+    </description>
+
+ 
+
+    <property name="projectName" value="FlightSearchAnt" />
+    <property name="src.dir" location="src" />
+    <property name="build.dir" location="bin" />
+    <property name="dist.dir" location="dist" />
+    <property name="dist.lib.dir" location="dist/lib" />
+    <property name="lib.dir" value="lib" />
+    <property name="main-class" value="com.mkyong.core.utils.DateUtils" />
+    
+    <target name="resolve" description="retrieve dependencies with ivy">
+        <ivy:retrieve />
+    </target>
+
+ 
+
+
+    <target name="install" description="install dependencies">
+          <ivy:install organisation="FlightSearch" module="com.opencsv" 
+             revision="2.6" transitive="true" overwrite="false" 
+             from="public" to="local" />
+       </target>
+    <target name="ivy" description="Install ivy">
+            
+            <get dest="${lib.dir}" src="https://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.4.0-rc1/ivy-2.4.0-rc1.jar" />
+        </target>
+
+ 
+
+    <target name="init">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${lib.dir}"/>
+    </target>
+
+ 
+
+
+    <path id="classpath">
+        <fileset dir="${basedir}/">
+            <include name="${lib.dir}/*.jar" />
+            <exclude name="${lib.dir}/*sources.jar" />
+            <exclude name="${lib.dir}/*javadoc.jar" />
+        </fileset>
+    </path>
+
+ 
+
+
+    <target name="compile" depends="init" description="compile the source ">
+        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath" classpath="C:\Users\prashukjain\.m2\repository\net\sf\opencsv\opencsv\2.3\opencsv-2.3.jar"   />
+    </target>
+
+ 
+
+    
+
+ 
+
+    <target name="copy-dependencies">
+        <copy todir="${dist.lib.dir}">
+            <fileset dir="${lib.dir}" includes="**/*.jar" excludes="**/*sources.jar, **/*javadoc.jar" />
+        </copy>
+    </target>
+
+ 
+
+
+    <target name="jar" depends="compile, copy-dependencies" description="package, output to JAR">
+
+ 
+
+        <echo message="classpath.name : ${classpath.name} " />
+
+ 
+
+        <mkdir dir="${dist.dir}" />
+        <mkdir dir="${dist.lib.dir}" />
+
+ 
+
+        <jar jarfile="${dist.dir}/${projectName}.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}" />
+                <attribute name="Class-Path" value="${classpath.name}" />
+            </manifest>
+        </jar>
+    </target>
+
+ 
+
+    <target name="clean" description="clean up">
+        <delete dir="${dist.lib.dir}" />
+    
+    </target>
+
+ 
+
+    <!-- Default, run this -->
+    <target name="main" depends="clean, compile, jar" />
+
+ 
+
+</project>
